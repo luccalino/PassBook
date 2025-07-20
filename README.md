@@ -1,7 +1,5 @@
 # **PassBook** – Your Checkbook for European Mountain Passes
 
-<a href="https://github.com/luccalino/PassBook">PassBook</a> © 2025 by <a href="https://creativecommons.org">Lucca Zachmann</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
-
 **PassBook** is an R-based tool that tracks and visualizes your ascents of mountain passes across Europe, using data from **Strava** and **quäldich.de**.
 
 ### What it does 🔍
@@ -14,7 +12,7 @@
 ## Prerequisites ✅
 
 - A valid **Strava** account (with activity data).
-- **R** and basic R knowledge to run the scripts.
+- **R** and basic R knowledge to run the scripts. 
 
 ## Example Visualizations 📊
 
@@ -24,3 +22,4 @@
 ### Spatial Plot of Climbed Passes (Switzerland)
 ![Spatial Plot](plots/spatial_schweiz.png)
 
+<a href="https://github.com/luccalino/PassBook">PassBook</a> © 2025 by <a href="https://creativecommons.org">Lucca Zachmann</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
