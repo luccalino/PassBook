@@ -1,13 +1,12 @@
 # Loading packages (install if not yet installed)
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse, rvest, raster, gepaf, sf, gtools, rStrava, ggrepel)
+pacman::p_load(tidyverse, rvest, raster, gepaf, sf, gtools, rStrava, ggrepel, plotly)
 
 # Admin
-sname <- ""
-sid <- 
-stoken <- ""
+sname <- "lazarus1"
+sid <- 39680
+stoken <- "3b681c5afe1168342f9ad1a551e1ea0bf473157d"
 
-rname <- "Lucca"
 country <- "schweiz"
   
 scrape <- 0
@@ -220,9 +219,6 @@ if (country == "italien") {
 map_list <- list()
 
 for (i in 1:nrow(data)) {
-  #this_activity <- get_activity(id = data$id[i], stoken = stoken)
-  #this_polyline <- this_activity$map$summary_polyline 
-  #decoded_polyline <- ifelse(is.null(this_polyline), next, print(i))
   decoded_polyline <- gepaf::decodePolyline(data$map.summary_polyline[i])
   decoded_polyline$id <- i
   map_list[[i]] <- decoded_polyline
@@ -283,9 +279,6 @@ capitalize <- function(x) {
     sapply(x, function(z) paste(z, collapse = " "))
   }
   
-rname_new <- capitalize(gsub("_"," ",rname)) 
-country_new <- capitalize(country) 
-  
 # Plotting Checkbook 
 p1 <- ggplot(data = plot_data, aes(x = reorder(name, +altitude), y = altitude)) + 
   facet_grid(. ~ reorder(categorie, +altitude), switch = "x", scales = "free_x", space = "free_x") +
@@ -300,8 +293,6 @@ p1 <- ggplot(data = plot_data, aes(x = reorder(name, +altitude), y = altitude)) 
   scale_color_manual(breaks = c("Yes, check!","No, not yet"), values = c(green, red)) +
   ylab("") +
   xlab("") +
-  labs(title = "PassBook: Cyclists Pass Checkbook",
-       subtitle = paste0("Country: ",country_new)) +
   labs(color = "Passed?") +
   theme_minimal() +
   theme(strip.placement = "outside",
@@ -320,6 +311,10 @@ p1 <- ggplot(data = plot_data, aes(x = reorder(name, +altitude), y = altitude)) 
 
 ggsave(plot = p1, width = 297, height = 210, unit = "mm", bg = "white", dpi = 400, filename = paste0("plots/passed_",country,".png"))
   
+l1 <- plotly::ggplotly(p1)
+
+htmlwidgets::saveWidget(l1, paste0("plots/passed_",country,".html"))
+
 # Spatial plot
 # Convert coordinates from WGS 84 to LV95 
 merged_passes_conv <- merged_passes
@@ -355,9 +350,9 @@ rm(relief_spdf)
 merged_passes_conv$new_name <- ifelse(merged_passes_conv$passed != "Check!", as.character(merged_passes_conv$name), "")  
 
 p2 <- ggplot() +
+  geom_sf(data = subset(country_data, NAME == "Schweiz"), fill = "white", color = "black", size = 0.5) +
   geom_raster(data = relief, aes(x = x, y = y, alpha = value), fill = "grey30") +
-  scale_alpha(name = "", range = c(0.8, 0), guide = "none") + 
-  geom_sf(data = subset(country_data, NAME == "Schweiz"), fill = NA, color = "black", size = 0.5) +
+  scale_alpha(name = "", range = c(1, 0), guide = "none") + 
   geom_sf(data = lakes, color = 'deepskyblue3', fill = 'deepskyblue3', size = 0.025, show.legend = FALSE) +
   geom_point(data = subset(merged_passes_conv, altitude > 1000), 
              aes(x = coords.x1, y = coords.x2, 
@@ -397,6 +392,9 @@ p2 <- ggplot() +
 
 ggsave(plot = p2, width = 330, height = 210, unit = "mm", bg = "white", dpi = 400, filename = paste0("plots/spatial_",country,".png"))
 
+l2 <- plotly::ggplotly(p2)
+
+htmlwidgets::saveWidget(l1, paste0("plots/spatial_",country,".html"))
 
 
 
