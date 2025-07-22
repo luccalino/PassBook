@@ -18,8 +18,8 @@
 This is a step-by-step guide on how to use the app:
 - Navigate to https://www.strava.com/settings/api
 - Set up your Strava API by specifying your app name
-- ![Strava API](plots/strava_api.jpg)
-- Insert the app name, user ID, and client secret into lines 6 to 8 of the PassBook.R script
+- ![Strava API](strava_api.jpg)
+- Insert the app name, user ID, and client secret into lines 6 to 8 of the code/PassBook.R script
 - Press Run
 
 ## Example Visualizations 📊
