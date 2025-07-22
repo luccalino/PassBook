@@ -2,13 +2,12 @@
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(tidyverse, rvest, raster, gepaf, sf, gtools, rStrava, ggrepel, plotly)
 
-# Admin
-sname <- "lazarus1"
-sid <- 39680
-stoken <- "3b681c5afe1168342f9ad1a551e1ea0bf473157d"
+# User provided input
+app_name <- ""
+client_id <- 
+client_secret <- ""
 
 country <- "schweiz"
-  
 scrape <- 0
 
 ######### Scraping quäldich.de #########
@@ -190,7 +189,7 @@ split(square, row(square)), ID), proj4string = CRS(as.character("+proj=longlat +
 ## Get strava data
 
 # Create the authentication token
-stoken <- httr::config(token = strava_oauth(sname, sid, stoken, app_scope = "activity:read_all"))
+stoken <- httr::config(token = strava_oauth(app_name, client_id, client_secret, app_scope = "activity:read_all"))
 
 # Get activities
 my_acts <- get_activity_list(stoken)
