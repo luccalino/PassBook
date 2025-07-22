@@ -1,25 +1,25 @@
 # **PassBook** – Mapping your bike-climbed passes
 
-**PassBook** is an R-based tool that tracks and visualizes your ascents of mountain passes across Europe, using data from **Strava** and **quälldich.de**.
+**PassBook** is an R-based tool that tracks and visualizes your ascents of mountain passes across Europe, using data from **Strava** and **quäldich.de**.
 
 ### What it does 🔍
 
 - Automatically detects which passes you've climbed using your **Strava** activity data.
-- Cross-references climbs with pass data from **quälldich.de**.
+- Cross-references climbs with pass data from **quäldich.de**.
 - Supports **Switzerland**, **France**, **Spain**, and **Italy**.
 - Provides both **statistical** and **spatial** visualizations of your achievements.
 
 ## Prerequisites ✅
 
-- A valid **Strava** account (with activity data).
+- A valid **Strava** account, with outdoor cycling activity data.
 - **R** and basic R knowledge to run the scripts. 
 
 ## User guide 📘
 This is a step-by-step guide on how to use the app:
 - Navigate to https://www.strava.com/settings/api
 - Set up your Strava API by specifying your app name
-- ![Strava API](strava_api.jpg)
-- Insert the app name, user ID, and client secret into lines 6 to 8 of the code/PassBook.R script
+![Strava API](strava_api.jpg)
+- Insert the app name, client ID, and client secret into lines 6 to 8 of the code/PassBook.R script
 - Press Run
 
 ## Example Visualizations 📊
